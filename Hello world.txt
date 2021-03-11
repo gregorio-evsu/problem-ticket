@@ -5,3 +5,5 @@ new content.
 
 
 Please add this to master immediately.
+
+Changed 1
