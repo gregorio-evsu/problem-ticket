@@ -6,7 +6,6 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 
 
-
 export class ContactServiceService {
 
   DATA_STORAGE = 'data';
@@ -58,8 +57,4 @@ export class ContactServiceService {
     const cont = await Storage.get({ key: this.DATA_STORAGE });
     return JSON.parse(cont.value) || [];
   }
-
-
-
-
 }

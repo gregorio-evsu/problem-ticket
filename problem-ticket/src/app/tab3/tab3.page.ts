@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ContactServiceService } from '../services/contact-service.service';
 import { ToastController } from '@ionic/angular';
-
+import { Router, NavigationExtras } from '@angular/router'
+import { ContactServiceService } from '../services/contact-service.service'
 
 @Component({
   selector: 'app-tab3',
@@ -14,7 +14,7 @@ export class Tab3Page {
   contacts: any = [];
 
 
-  constructor(public contactService: ContactServiceService, public toast: ToastController) { }
+  constructor(public contactService: ContactServiceService, public toast: ToastController, public router: Router) { }
 
   async ngOnInit() {
     this.contactService.getData().then(data => {
@@ -35,6 +35,7 @@ export class Tab3Page {
    * @param index 
    */
   async deleteContact(index) {
+    
     const toasts = await this.toast.create({
       message: 'Delete Contact',
       position: "top",
@@ -59,6 +60,17 @@ export class Tab3Page {
         }]
     })
     toasts.present();
+  }
+
+  navigateToMessage(data, i) {
+    console.log(data);
+    console.log(i);
+      let navigationExtras: NavigationExtras = {
+        state: {
+          special: {index: i, data: data}
+        }
+      };
+      this.router.navigate(['/edit'], navigationExtras);
   }
 
 
