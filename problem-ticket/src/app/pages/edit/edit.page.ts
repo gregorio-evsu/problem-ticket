@@ -18,6 +18,7 @@ export class EditPage implements OnInit {
             let data = this.router.getCurrentNavigation().extras.state
             this.name = data.special.data.name
             this.contNum = data.special.data.number
+            console.log('upload to git repo');
             console.log(data);
          }
     });
